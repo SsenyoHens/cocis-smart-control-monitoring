@@ -1,0 +1,838 @@
+{
+  "version": 1,
+  "author": "CoCIS Embedded Systems Group",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-esp32-devkit-v1",
+      "id": "esp",
+      "top": 40,
+      "left": 80,
+      "attrs": {}
+    },
+    {
+      "type": "board-mfrc522",
+      "id": "rfid_entry",
+      "top": -120,
+      "left": -500,
+      "attrs": {
+        "label": "ENTRY RFID"
+      }
+    },
+    {
+      "type": "wokwi-microsd-card",
+      "id": "sd",
+      "top": 300,
+      "left": -40,
+      "attrs": {
+        "label": "SD CARD"
+      }
+    },
+    {
+      "type": "wokwi-servo",
+      "id": "door_entry",
+      "top": -20,
+      "left": -690,
+      "attrs": {
+        "label": "ENTRY DOOR"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "granted",
+      "top": 250,
+      "left": 470,
+      "attrs": {
+        "color": "green",
+        "label": "ACCESS GRANTED"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "denied",
+      "top": 250,
+      "left": 590,
+      "attrs": {
+        "color": "red",
+        "label": "ACCESS DENIED"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 315,
+      "left": 480,
+      "attrs": {
+        "value": "220"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 315,
+      "left": 600,
+      "attrs": {
+        "value": "220"
+      }
+    },
+    {
+      "type": "wokwi-pir-motion-sensor",
+      "id": "room1_pir",
+      "top": 450,
+      "left": -430,
+      "attrs": {
+        "delayTime": "5",
+        "label": "ROOM 1 PIR"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "room1_light",
+      "top": 470,
+      "left": -150,
+      "attrs": {
+        "color": "yellow",
+        "label": "ROOM 1 LIGHT"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "room1_r1",
+      "top": 535,
+      "left": -110,
+      "attrs": {
+        "value": "220"
+      }
+    },
+    {
+      "type": "wokwi-pir-motion-sensor",
+      "id": "room2_pir",
+      "top": 450,
+      "left": 520,
+      "attrs": {
+        "delayTime": "5",
+        "label": "ROOM 2 PIR"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "room2_light",
+      "top": 470,
+      "left": 800,
+      "attrs": {
+        "color": "yellow",
+        "label": "ROOM 2 LIGHT"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "room2_r1",
+      "top": 535,
+      "left": 840,
+      "attrs": {
+        "value": "220"
+      }
+    },
+    {
+      "type": "wokwi-lcd2004",
+      "id": "admin_lcd",
+      "top": -320,
+      "left": -20,
+      "attrs": {
+        "pins": "i2c",
+        "background": "blue",
+        "color": "white",
+        "label": "ADMIN LCD"
+      }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "buzzer",
+      "top": 20,
+      "left": 520,
+      "attrs": {
+        "volume": "0.5"
+      }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "emergency",
+      "top": 120,
+      "left": 500,
+      "attrs": {
+        "label": "EMERGENCY RELEASE",
+        "color": "red"
+      }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "fire",
+      "top": 120,
+      "left": 620,
+      "attrs": {
+        "label": "FIRE TEST INPUT",
+        "color": "orange"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "pull_emg",
+      "top": 265,
+      "left": 510,
+      "attrs": {
+        "value": "10000"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "pull_fire",
+      "top": 265,
+      "left": 630,
+      "attrs": {
+        "value": "10000"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "pull_sda",
+      "top": -245,
+      "left": 355,
+      "attrs": {
+        "value": "4700"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "pull_scl",
+      "top": -190,
+      "left": 390,
+      "attrs": {
+        "value": "4700"
+      }
+    },
+    {
+      "type": "board-mfrc522",
+      "id": "rfid_exit",
+      "top": -120,
+      "left": 620,
+      "attrs": {
+        "label": "EXIT RFID"
+      }
+    },
+    {
+      "type": "wokwi-servo",
+      "id": "door_exit",
+      "top": -20,
+      "left": 900,
+      "attrs": {
+        "label": "EXIT DOOR"
+      }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "lbl_title",
+      "top": -455,
+      "left": -710,
+      "attrs": {
+        "text": "CoCIS SMART CONTROL - 3 TERMINALS / 1 ESP32"
+      }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "lbl_admin",
+      "top": -400,
+      "left": -60,
+      "attrs": {
+        "text": "ADMIN / SERIAL STATUS"
+      }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "lbl_lcd",
+      "top": -365,
+      "left": -45,
+      "attrs": {
+        "text": "20x4 I2C LCD DISPLAY"
+      }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "lbl_entry_section",
+      "top": -260,
+      "left": -585,
+      "attrs": {
+        "text": "ENTRANCE TERMINAL"
+      }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "lbl_entry_reader",
+      "top": -172,
+      "left": -505,
+      "attrs": {
+        "text": "ENTRY MFRC522 RFID"
+      }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "lbl_entry_servo",
+      "top": -72,
+      "left": -715,
+      "attrs": {
+        "text": "ENTRY DOOR SERVO"
+      }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "lbl_exit_section",
+      "top": -260,
+      "left": 625,
+      "attrs": {
+        "text": "EXIT TERMINAL"
+      }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "lbl_exit_reader",
+      "top": -172,
+      "left": 615,
+      "attrs": {
+        "text": "EXIT MFRC522 RFID"
+      }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "lbl_exit_servo",
+      "top": -70,
+      "left": 905,
+      "attrs": {
+        "text": "EXIT DOOR SERVO"
+      }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "lbl_central",
+      "top": -12,
+      "left": 40,
+      "attrs": {
+        "text": "CENTRAL ESP32 CONTROLLER"
+      }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "lbl_sd",
+      "top": 270,
+      "left": -78,
+      "attrs": {
+        "text": "MICRO SD CARD - AUDIT LOGS"
+      }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "lbl_buzzer",
+      "top": -25,
+      "left": 512,
+      "attrs": {
+        "text": "BUZZER / AUDIBLE ALERT"
+      }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "lbl_emergency",
+      "top": 93,
+      "left": 483,
+      "attrs": {
+        "text": "EMERGENCY RELEASE"
+      }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "lbl_fire",
+      "top": 93,
+      "left": 607,
+      "attrs": {
+        "text": "FIRE TEST BUTTON"
+      }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "lbl_granted",
+      "top": 225,
+      "left": 433,
+      "attrs": {
+        "text": "GREEN - ACCESS GRANTED"
+      }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "lbl_denied",
+      "top": 225,
+      "left": 574,
+      "attrs": {
+        "text": "RED - ACCESS DENIED"
+      }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "lbl_room1",
+      "top": 365,
+      "left": -440,
+      "attrs": {
+        "text": "LECTURE ROOM 1"
+      }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "lbl_room1pir",
+      "top": 415,
+      "left": -443,
+      "attrs": {
+        "text": "ROOM 1 PIR SENSOR"
+      }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "lbl_room1led",
+      "top": 440,
+      "left": -162,
+      "attrs": {
+        "text": "ROOM 1 LIGHT"
+      }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "lbl_room2",
+      "top": 365,
+      "left": 515,
+      "attrs": {
+        "text": "LECTURE ROOM 2"
+      }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "lbl_room2pir",
+      "top": 415,
+      "left": 517,
+      "attrs": {
+        "text": "ROOM 2 PIR SENSOR"
+      }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "lbl_room2led",
+      "top": 440,
+      "left": 794,
+      "attrs": {
+        "text": "ROOM 2 LIGHT"
+      }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "lbl_pullups",
+      "top": -282,
+      "left": 345,
+      "attrs": {
+        "text": "I2C PULL-UP RESISTORS"
+      }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "lbl_alarm_res",
+      "top": 346,
+      "left": 472,
+      "attrs": {
+        "text": "ALARM INPUT RESISTORS"
+      }
+    }
+  ],
+  "connections": [
+    [
+      "rfid_entry:3.3V",
+      "esp:3V3",
+      "red",
+      []
+    ],
+    [
+      "rfid_entry:GND",
+      "esp:GND.1",
+      "black",
+      []
+    ],
+    [
+      "rfid_entry:SCK",
+      "esp:D18",
+      "orange",
+      []
+    ],
+    [
+      "rfid_entry:MISO",
+      "esp:D19",
+      "purple",
+      []
+    ],
+    [
+      "rfid_entry:MOSI",
+      "esp:D23",
+      "green",
+      []
+    ],
+    [
+      "rfid_entry:SDA",
+      "esp:D5",
+      "gold",
+      []
+    ],
+    [
+      "rfid_entry:RST",
+      "esp:D21",
+      "cyan",
+      []
+    ],
+    [
+      "sd:VCC",
+      "esp:3V3",
+      "red",
+      []
+    ],
+    [
+      "sd:GND",
+      "esp:GND.1",
+      "black",
+      []
+    ],
+    [
+      "sd:SCK",
+      "esp:D18",
+      "orange",
+      []
+    ],
+    [
+      "sd:DO",
+      "esp:D19",
+      "purple",
+      []
+    ],
+    [
+      "sd:DI",
+      "esp:D23",
+      "green",
+      []
+    ],
+    [
+      "sd:CS",
+      "esp:D13",
+      "cyan",
+      []
+    ],
+    [
+      "door_entry:V+",
+      "esp:VIN",
+      "red",
+      []
+    ],
+    [
+      "door_entry:GND",
+      "esp:GND.2",
+      "black",
+      []
+    ],
+    [
+      "door_entry:PWM",
+      "esp:D25",
+      "blue",
+      []
+    ],
+    [
+      "granted:A",
+      "esp:D26",
+      "blue",
+      []
+    ],
+    [
+      "granted:C",
+      "r1:1",
+      "blue",
+      []
+    ],
+    [
+      "r1:2",
+      "esp:GND.2",
+      "black",
+      []
+    ],
+    [
+      "denied:A",
+      "esp:D27",
+      "blue",
+      []
+    ],
+    [
+      "denied:C",
+      "r2:1",
+      "blue",
+      []
+    ],
+    [
+      "r2:2",
+      "esp:GND.2",
+      "black",
+      []
+    ],
+    [
+      "room1_pir:VCC",
+      "esp:3V3",
+      "red",
+      []
+    ],
+    [
+      "room1_pir:GND",
+      "esp:GND.1",
+      "black",
+      []
+    ],
+    [
+      "room1_pir:OUT",
+      "esp:D34",
+      "green",
+      []
+    ],
+    [
+      "room1_light:A",
+      "esp:D14",
+      "green",
+      []
+    ],
+    [
+      "room1_light:C",
+      "room1_r1:1",
+      "green",
+      []
+    ],
+    [
+      "room1_r1:2",
+      "esp:GND.2",
+      "black",
+      []
+    ],
+    [
+      "room2_pir:VCC",
+      "esp:3V3",
+      "red",
+      []
+    ],
+    [
+      "room2_pir:GND",
+      "esp:GND.1",
+      "black",
+      []
+    ],
+    [
+      "room2_pir:OUT",
+      "esp:D35",
+      "green",
+      []
+    ],
+    [
+      "room2_light:A",
+      "esp:D22",
+      "green",
+      []
+    ],
+    [
+      "room2_light:C",
+      "room2_r1:1",
+      "green",
+      []
+    ],
+    [
+      "room2_r1:2",
+      "esp:GND.2",
+      "black",
+      []
+    ],
+    [
+      "admin_lcd:SDA",
+      "esp:RX2",
+      "blue",
+      []
+    ],
+    [
+      "admin_lcd:SCL",
+      "esp:TX2",
+      "yellow",
+      []
+    ],
+    [
+      "admin_lcd:VCC",
+      "esp:VIN",
+      "red",
+      []
+    ],
+    [
+      "admin_lcd:GND",
+      "esp:GND.1",
+      "black",
+      []
+    ],
+    [
+      "pull_sda:1",
+      "esp:RX2",
+      "blue",
+      []
+    ],
+    [
+      "pull_sda:2",
+      "esp:3V3",
+      "red",
+      []
+    ],
+    [
+      "pull_scl:1",
+      "esp:TX2",
+      "yellow",
+      []
+    ],
+    [
+      "pull_scl:2",
+      "esp:3V3",
+      "red",
+      []
+    ],
+    [
+      "buzzer:1",
+      "esp:GND.2",
+      "black",
+      []
+    ],
+    [
+      "buzzer:2",
+      "esp:D4",
+      "magenta",
+      []
+    ],
+    [
+      "emergency:1.l",
+      "esp:VP",
+      "orange",
+      []
+    ],
+    [
+      "emergency:2.l",
+      "esp:GND.2",
+      "black",
+      []
+    ],
+    [
+      "pull_emg:1",
+      "esp:VP",
+      "orange",
+      []
+    ],
+    [
+      "pull_emg:2",
+      "esp:3V3",
+      "red",
+      []
+    ],
+    [
+      "fire:1.l",
+      "esp:VN",
+      "orange",
+      []
+    ],
+    [
+      "fire:2.l",
+      "esp:GND.2",
+      "black",
+      []
+    ],
+    [
+      "pull_fire:1",
+      "esp:VN",
+      "orange",
+      []
+    ],
+    [
+      "pull_fire:2",
+      "esp:3V3",
+      "red",
+      []
+    ],
+    [
+      "esp:TX0",
+      "$serialMonitor:RX",
+      "",
+      []
+    ],
+    [
+      "esp:RX0",
+      "$serialMonitor:TX",
+      "",
+      []
+    ],
+    [
+      "rfid_exit:3.3V",
+      "esp:3V3",
+      "red",
+      []
+    ],
+    [
+      "rfid_exit:GND",
+      "esp:GND.1",
+      "black",
+      []
+    ],
+    [
+      "rfid_exit:SCK",
+      "esp:D18",
+      "orange",
+      []
+    ],
+    [
+      "rfid_exit:MISO",
+      "esp:D19",
+      "purple",
+      []
+    ],
+    [
+      "rfid_exit:MOSI",
+      "esp:D23",
+      "green",
+      []
+    ],
+    [
+      "rfid_exit:SDA",
+      "esp:D32",
+      "gold",
+      []
+    ],
+    [
+      "rfid_exit:RST",
+      "esp:D21",
+      "cyan",
+      []
+    ],
+    [
+      "door_exit:V+",
+      "esp:VIN",
+      "red",
+      []
+    ],
+    [
+      "door_exit:GND",
+      "esp:GND.2",
+      "black",
+      []
+    ],
+    [
+      "door_exit:PWM",
+      "esp:D33",
+      "blue",
+      []
+    ]
+  ],
+  "serialMonitor": {
+    "display": "terminal",
+    "newline": "lf"
+  }
+}
